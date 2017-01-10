@@ -1,0 +1,30 @@
+<!-- Comments Form -->
+<div class="well">
+  <div class="alert alert-success" *ngIf="commentSaved">Comment added.</div>
+  <h4>{{title}}</h4>
+  <form role="form" [formGroup]="saveCommentForm" (ngSubmit)="saveComment($event)">
+    <div class="form-group"  [ngClass]="{'has-error':!saveCommentForm.controls['comment_text'].valid && saveCommentForm.controls['comment_text'].touched}">
+      <textarea class="form-control" [formControl]="saveCommentForm.controls['comment_text']" rows="3"></textarea>
+      <!-- Here we are using the ngIf directive to display an error message if the user has not selected a gender since we can’t color the radio buttons. -->
+      <div class="alert alert-danger" *ngIf="!saveCommentForm.controls['comment_text'].valid && saveCommentForm.controls['comment_text'].touched">You must enter a comment.</div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!saveCommentForm.valid">Submit</button>
+  </form>
+</div>
+<hr>
+
+<!-- Posted Comments -->
+
+<div *ngIf='comments && comments.length'>
+  <div class="media" *ngFor='let comment of comments'>
+    <a class="pull-left" href="#">
+      <img class="media-object" src="http://placehold.it/64x64" alt="">
+    </a>
+    <div class="media-body">
+      <h4 class="media-heading">{{comment.username}}
+        <small>{{comment.createdDate}}</small>
+      </h4>
+      {{comment.text}}
+    </div>
+  </div>
+</div>

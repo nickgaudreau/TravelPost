@@ -1,0 +1,30 @@
+<div class="well">
+  <div class="alert alert-success" *ngIf="postSaved">Post added.</div>
+  <h4>Enter a new post:</h4>
+  <form role="form" [formGroup]="savePostForm" (ngSubmit)="savePost($event)">
+    <div class="form-group" [ngClass]="{'has-error':!savePostForm.controls['post_title'].valid && savePostForm.controls['post_title'].touched}">
+      <label>Title</label>
+      <input class="form-control" type="text" [formControl]="savePostForm.controls['post_title']">
+      <!-- Here we are using the ngIf directive to display an error message  -->
+      <div class="alert alert-danger" *ngIf="!savePostForm.controls['post_title'].valid && savePostForm.controls['post_title'].touched">You must enter a title.</div>
+    </div>
+    <div class="form-group"[ngClass]="{'has-error':!savePostForm.controls['post_location'].valid && savePostForm.controls['post_location'].touched}">
+      <label for="select-city">Select city:</label>
+      <!-- to remove from the registered form group : [ngModelOptions]="{standalone: true}" -->
+      <input class="form-control" type="text" [formControl]="savePostForm.controls['post_location']" id="select-city" list="cities" />
+      <!--<input class="form-control" type="text" [(ngModel)]='txtCity' [ngModelOptions]="{standalone: true}" id="select-city" list="cities" />-->
+      <datalist id="cities" > <!-- on init just bind the ILocation obj, then in option obj.cityName  no need of the pipe - HTML5 already filter -->
+        <option *ngFor='let city of worldCities'>{{city.name}}</option>
+      </datalist>
+      <div class="alert alert-danger" *ngIf="!savePostForm.controls['post_location'].valid && savePostForm.controls['post_location'].touched">You must enter/select a location.</div>
+    </div>
+    <div class="form-group" >
+      <label>Post</label>
+      <textarea id="summernote" class="form-control" [formControl]="savePostForm.controls['post_text']" rows="3"></textarea>
+      <!-- Here we are using the ngIf directive to display an error message  -->
+      <div class="alert alert-danger" *ngIf="!savePostForm.controls['post_text'].valid && savePostForm.controls['post_text'].touched">You must enter a text.</div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!savePostForm.valid">Submit</button>
+  </form>
+</div>
+<hr>
