@@ -7,8 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  title: string = 'Welcome to Ng 2 Simple Blog';
-  description: string = 'This is a testing application to put together Angualr 2, .NET REST web api, Entity Framework with SqlLite and Bootstrap';
+  imgPath:string = "assets/img/";
+
+  // could use like this in html: [src]='getPath("logo.png")'
+  public getPath(img:string): string{
+    return this.imgPath + img;
+  }
+
   constructor() { }
 
   ngOnInit() {

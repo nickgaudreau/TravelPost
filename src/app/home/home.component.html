@@ -1,55 +1,250 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="jumbotron well">
-        <h2>
-          {{title}}
-        </h2>
-        <p>
-          {{description}}
-        </p>
-        <p>
-          <a class="btn btn-primary btn-large" href="#">Learn more</a>
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-4">
-      <h2>
-        Heading
-      </h2>
-      <p>
-        Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-        ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-      </p>
-      <p>
-        <a class="btn" href="#">View details »</a>
-      </p>
-    </div>
-    <div class="col-md-4">
-      <h2>
-        Heading
-      </h2>
-      <p>
-        Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-        ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-      </p>
-      <p>
-        <a class="btn" href="#">View details »</a>
-      </p>
-    </div>
-    <div class="col-md-4">
-      <h2>
-        Heading
-      </h2>
-      <p>
-        Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
-        ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-      </p>
-      <p>
-        <a class="btn" href="#">View details »</a>
-      </p>
-    </div>
-  </div>
-</div>
+<!-- try template -- >
+
+<!---start-wrap---->
+			
+		<!---start-content---->
+		<div class="content">
+			<div class="wrap">
+			 <div id="main" role="main">
+			      <ul id="tiles">
+			        <!-- These are our grid blocks -->
+			        <li onclick="location.href='single-page.html';">
+			        	<img [src]='getPath("img1.jpg")' width="282" height="118">
+			        	<div class="post-info">
+			        		<div class="post-basic-info">
+				        		<h3><a href="#">Animation films</a></h3>
+				        		<span><a href="#"><label> </label>Movies</a></span>
+				        		<p>Lorem Ipsum is simply dummy text of the printing & typesetting industry.</p>
+			        		</div>
+			        		<div class="post-info-rate-share">
+			        			<div class="rateit">
+			        				<span> </span>
+			        			</div>
+			        			<div class="post-share">
+			        				<span> </span>
+			        			</div>
+			        			<div class="clear"> </div>
+			        		</div>
+			        	</div>
+			        </li>
+			        <li onclick="location.href='single-page.html';">
+			        	<img [src]='getPath("img2.jpg")' width="282" height="344">
+						<div class="post-info">
+			        		<div class="post-basic-info">
+				        		<h3><a href="#">Animation films</a></h3>
+				        		<span><a href="#"><label> </label>Movies</a></span>
+				        		<p>Lorem Ipsum is simply dummy text of the printing & typesetting industry.</p>
+			        		</div>
+			        		<div class="post-info-rate-share">
+			        			<div class="rateit">
+			        				<span> </span>
+			        			</div>
+			        			<div class="post-share">
+			        				<span> </span>
+			        			</div>
+			        			<div class="clear"> </div>
+			        		</div>
+			        	</div>
+					</li>
+			        <li onclick="location.href='single-page.html';">
+			        	<img [src]='getPath("img3.jpg")' width="282" height="210">
+			        	<div class="post-info">
+			        		<div class="post-basic-info">
+				        		<h3><a href="#">Animation films</a></h3>
+				        		<span><a href="#"><label> </label>Movies</a></span>
+				        		<p>Lorem Ipsum is simply dummy text of the printing & typesetting industry.</p>
+			        		</div>
+			        		<div class="post-info-rate-share">
+			        			<div class="rateit">
+			        				<span> </span>
+			        			</div>
+			        			<div class="post-share">
+			        				<span> </span>
+			        			</div>
+			        			<div class="clear"> </div>
+			        		</div>
+			        	</div>
+			        </li>
+			        <li onclick="location.href='single-page.html';">
+			        	<img [src]='getPath("img4.jpg")' width="282" height="385">
+			        	<div class="post-info">
+			        		<div class="post-basic-info">
+				        		<h3><a href="#">Animation films</a></h3>
+				        		<span><a href="#"><label> </label>Movies</a></span>
+				        		<p>Lorem Ipsum is simply dummy text of the printing & typesetting industry.</p>
+			        		</div>
+			        		<div class="post-info-rate-share">
+			        			<div class="rateit">
+			        				<span> </span>
+			        			</div>
+			        			<div class="post-share">
+			        				<span> </span>
+			        			</div>
+			        			<div class="clear"> </div>
+			        		</div>
+			        	</div>
+			        </li>
+			        <!----//--->
+			        <li onclick="location.href='single-page.html';">
+			        	<img [src]='getPath("img4.jpg")' width="282" height="385">
+			        	<div class="post-info">
+			        		<div class="post-basic-info">
+				        		<h3><a href="#">Animation films</a></h3>
+				        		<span><a href="#"><label> </label>Movies</a></span>
+				        		<p>Lorem Ipsum is simply dummy text of the printing & typesetting industry.</p>
+			        		</div>
+			        		<div class="post-info-rate-share">
+			        			<div class="rateit">
+			        				<span> </span>
+			        			</div>
+			        			<div class="post-share">
+			        				<span> </span>
+			        			</div>
+			        			<div class="clear"> </div>
+			        		</div>
+			        	</div>
+			        </li>
+			        <li onclick="location.href='single-page.html';">
+			        	<img [src]='getPath("img3.jpg")' width="282" height="210">
+			        	<div class="post-info">
+			        		<div class="post-basic-info">
+				        		<h3><a href="#">Animation films</a></h3>
+				        		<span><a href="#"><label> </label>Movies</a></span>
+				        		<p>Lorem Ipsum is simply dummy text of the printing & typesetting industry.</p>
+			        		</div>
+			        		<div class="post-info-rate-share">
+			        			<div class="rateit">
+			        				<span> </span>
+			        			</div>
+			        			<div class="post-share">
+			        				<span> </span>
+			        			</div>
+			        			<div class="clear"> </div>
+			        		</div>
+			        	</div>
+			        </li>
+			        <li onclick="location.href='single-page.html';">
+			        	<img [src]='getPath("img2.jpg")' width="282" height="344">
+						<div class="post-info">
+			        		<div class="post-basic-info">
+				        		<h3><a href="#">Animation films</a></h3>
+				        		<span><a href="#"><label> </label>Movies</a></span>
+				        		<p>Lorem Ipsum is simply dummy text of the printing & typesetting industry.</p>
+			        		</div>
+			        		<div class="post-info-rate-share">
+			        			<div class="rateit">
+			        				<span> </span>
+			        			</div>
+			        			<div class="post-share">
+			        				<span> </span>
+			        			</div>
+			        			<div class="clear"> </div>
+			        		</div>
+			        	</div>
+					</li>
+					  <li onclick="location.href='single-page.html';">
+			        	<img [src]='getPath("img1.jpg")' width="282" height="118">
+			        	<div class="post-info">
+			        		<div class="post-basic-info">
+				        		<h3><a href="#">Animation films</a></h3>
+				        		<span><a href="#"><label> </label>Movies</a></span>
+				        		<p>Lorem Ipsum is simply dummy text of the printing & typesetting industry.</p>
+			        		</div>
+			        		<div class="post-info-rate-share">
+			        			<div class="rateit">
+			        				<span> </span>
+			        			</div>
+			        			<div class="post-share">
+			        				<span> </span>
+			        			</div>
+			        			<div class="clear"> </div>
+			        		</div>
+			        	</div>
+			        </li>
+			        <!----//--->
+			         <li onclick="location.href='single-page.html';">
+			        	<img [src]='getPath("img1.jpg")' width="282" height="118">
+			        	<div class="post-info">
+			        		<div class="post-basic-info">
+				        		<h3><a href="#">Animation films</a></h3>
+				        		<span><a href="#"><label> </label>Movies</a></span>
+				        		<p>Lorem Ipsum is simply dummy text of the printing & typesetting industry.</p>
+			        		</div>
+			        		<div class="post-info-rate-share">
+			        			<div class="rateit">
+			        				<span> </span>
+			        			</div>
+			        			<div class="post-share">
+			        				<span> </span>
+			        			</div>
+			        			<div class="clear"> </div>
+			        		</div>
+			        	</div>
+			        </li>
+			        <li onclick="location.href='single-page.html';">
+			        	<img [src]='getPath("img2.jpg")' width="282" height="344">
+						<div class="post-info">
+			        		<div class="post-basic-info">
+				        		<h3><a href="#">Animation films</a></h3>
+				        		<span><a href="#"><label> </label>Movies</a></span>
+				        		<p>Lorem Ipsum is simply dummy text of the printing & typesetting industry.</p>
+			        		</div>
+			        		<div class="post-info-rate-share">
+			        			<div class="rateit">
+			        				<span> </span>
+			        			</div>
+			        			<div class="post-share">
+			        				<span> </span>
+			        			</div>
+			        			<div class="clear"> </div>
+			        		</div>
+			        	</div>
+					</li>
+			        <li onclick="location.href='single-page.html';">
+			        	<img [src]='getPath("img3.jpg")' width="282" height="210">
+			        	<div class="post-info">
+			        		<div class="post-basic-info">
+				        		<h3><a href="#">Animation films</a></h3>
+				        		<span><a href="#"><label> </label>Movies</a></span>
+				        		<p>Lorem Ipsum is simply dummy text of the printing & typesetting industry.</p>
+			        		</div>
+			        		<div class="post-info-rate-share">
+			        			<div class="rateit">
+			        				<span> </span>
+			        			</div>
+			        			<div class="post-share">
+			        				<span> </span>
+			        			</div>
+			        			<div class="clear"> </div>
+			        		</div>
+			        	</div>
+			        </li>
+			        <li onclick="location.href='single-page.html';">
+			        	<img [src]='getPath("img4.jpg")' width="282" height="385">
+			        	<div class="post-info">
+			        		<div class="post-basic-info">
+				        		<h3><a href="#">Animation films</a></h3>
+				        		<span><a href="#"><label> </label>Movies</a></span>
+				        		<p>Lorem Ipsum is simply dummy text of the printing & typesetting industry.</p>
+			        		</div>
+			        		<div class="post-info-rate-share">
+			        			<div class="rateit">
+			        				<span> </span>
+			        			</div>
+			        			<div class="post-share">
+			        				<span> </span>
+			        			</div>
+			        			<div class="clear"> </div>
+			        		</div>
+			        	</div>
+			        </li>
+			        <!-- End of grid blocks -->
+			      </ul>
+			    </div>
+			</div>
+		</div>
+		<!---//End-content---->
+
+
+
+<!-- end try template -->
