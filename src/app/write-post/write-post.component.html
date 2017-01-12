@@ -1,6 +1,6 @@
-<div class="well">
+<div class="well fix-top">
   <div class="alert alert-success" *ngIf="postSaved">Post added.</div>
-  <h4>Enter a new post:</h4>
+  <h4>Write a new post:</h4>
   <form role="form" [formGroup]="savePostForm" (ngSubmit)="savePost($event)">
     <div class="form-group" [ngClass]="{'has-error':!savePostForm.controls['post_title'].valid && savePostForm.controls['post_title'].touched}">
       <label>Title</label>
@@ -8,10 +8,24 @@
       <!-- Here we are using the ngIf directive to display an error message  -->
       <div class="alert alert-danger" *ngIf="!savePostForm.controls['post_title'].valid && savePostForm.controls['post_title'].touched">You must enter a title.</div>
     </div>
+    <div class="form-group" [ngClass]="{'has-error':!savePostForm.controls['post_mainPic'].valid && savePostForm.controls['post_mainPic'].touched}">
+      <label>Main post pic</label>
+      <textarea id="summernote-post-main-pic" class="form-control" [formControl]="savePostForm.controls['post_mainPic']" rows="3"></textarea>
+      <!--<div id="drop_zone"><noscript>JavaScript must be enabled to use the drop zone.</noscript></div>
+      <output id="list"></output>-->
+      <!-- Here we are using the ngIf directive to display an error message  -->
+      <div class="alert alert-danger" *ngIf="!savePostForm.controls['post_mainPic'].valid && savePostForm.controls['post_mainPic'].touched">You must enter an img.</div>
+    </div>
+    <div class="form-group" [ngClass]="{'has-error':!savePostForm.controls['post_memo'].valid && savePostForm.controls['post_memo'].touched}">
+      <label>Memo</label>
+      <input class="form-control" type="text" [formControl]="savePostForm.controls['post_memo']">
+      <!-- Here we are using the ngIf directive to display an error message  -->
+      <div class="alert alert-danger" *ngIf="!savePostForm.controls['post_memo'].valid && savePostForm.controls['post_memo'].touched">You must enter a memo.</div>
+    </div>
     <div class="form-group"[ngClass]="{'has-error':!savePostForm.controls['post_location'].valid && savePostForm.controls['post_location'].touched}">
-      <label for="select-city">Select city:</label>
+      <label for="select-city">Location:</label>
       <!-- to remove from the registered form group : [ngModelOptions]="{standalone: true}" -->
-      <input class="form-control" type="text" [formControl]="savePostForm.controls['post_location']" id="select-city" list="cities" />
+      <input class="form-control" type="text" [formControl]="savePostForm.controls['post_location']" id="select-city" list="cities" placeholder="start typing a city" />
       <!--<input class="form-control" type="text" [(ngModel)]='txtCity' [ngModelOptions]="{standalone: true}" id="select-city" list="cities" />-->
       <datalist id="cities" > <!-- on init just bind the ILocation obj, then in option obj.cityName  no need of the pipe - HTML5 already filter -->
         <option *ngFor='let city of worldCities'>{{city.name}}</option>
@@ -19,8 +33,8 @@
       <div class="alert alert-danger" *ngIf="!savePostForm.controls['post_location'].valid && savePostForm.controls['post_location'].touched">You must enter/select a location.</div>
     </div>
     <div class="form-group" >
-      <label>Post</label>
-      <textarea id="summernote" class="form-control" [formControl]="savePostForm.controls['post_text']" rows="3"></textarea>
+      <label>Post: Text, pictures video, ... anything you wish</label>
+      <textarea id="summernote-post-text" class="form-control" [formControl]="savePostForm.controls['post_text']" rows="3"></textarea>
       <!-- Here we are using the ngIf directive to display an error message  -->
       <div class="alert alert-danger" *ngIf="!savePostForm.controls['post_text'].valid && savePostForm.controls['post_text'].touched">You must enter a text.</div>
     </div>
@@ -28,3 +42,80 @@
   </form>
 </div>
 <hr>
+
+<!--<script>
+        (function(){
+            var processFiles = function (event) {
+                event.stopPropagation();
+                event.preventDefault();
+                removeDropZoneClass();
+
+                // FileList object of File objects
+                var files = event.dataTransfer.files;
+                var output = [];
+                for (var i = 0, f; f = files[i]; i++) {
+                    var reader = new FileReader();
+
+                    // closure to capture file info
+                    reader.onload = (function(file, index) {
+                        return function(e) {
+                            var dataUri = e.target.result,
+                                base64 = dataUri.substr(dataUri.indexOf(',') + 1),
+                                textarea, image, figcaption;
+                            textarea = ['<textarea onfocus="this.select()">', base64, '</textarea>'].join('');
+                            if (file.type.match('image.*')) {
+                                if (dataUri.length > 32768) {
+                                    figcaption = '<figcaption>In IE8, data URIs cannot be larger than 32,768 characters.</figcaption>';
+                                }
+                                image = ['<figure><img class="thumb" src="', dataUri, '" title="', file.name, '"/>',
+                                    figcaption, '</figure>'].join('');
+                            }
+                            document.getElementById(['file_', index + 1].join('')).innerHTML += [image, textarea].join('');
+                        };
+                    })(f, i);
+
+                    // read file as data URI
+                    reader.readAsDataURL(f);
+
+                    var data = ['<li id="file_', i + 1, '"><h3>', f.name, '</h3><dl>',
+                        '<dt>Type</dt><dd>', f.type || 'n/a', '</dd>',
+                        '<dt>Size</dt><dd>', f.size, ' bytes</dd>',
+                        '<dt>Last Modified</dt><dd>', f.lastModifiedDate ? f.lastModifiedDate.toDateString() : 'n/a', '</dd>',
+                        '</dl></li>'].join('');
+
+                    output.push(data);
+                }
+
+                if (files.length) {
+                    document.getElementById('list').innerHTML = '<ol>' + output.join('') + '</ol>';
+                }
+            };
+
+            var highlightDropZone = function (e) {
+                e.stopPropagation();
+                e.preventDefault();
+                document.getElementById('drop_zone').setAttribute('class', 'highlight');
+            }
+
+            var removeDropZoneClass = function () {
+                document.getElementById('drop_zone').removeAttribute('class');
+            }
+
+            // add event listeners if File API is supported
+            var dropZone = document.getElementById('drop_zone');
+            if (window.File && window.FileReader && window.FileList && window.Blob) {
+                dropZone.addEventListener('drop', processFiles, false);
+                dropZone.addEventListener('dragover', highlightDropZone, false);
+                dropZone.addEventListener('dragenter', highlightDropZone, false);
+                dropZone.addEventListener('dragleave', removeDropZoneClass, false);
+                dropZone.innerHTML = 'Drop files here';
+            } else {
+                dropZone.innerHTML = 'The File APIs are not fully supported in this browser.';
+                dropZone.className = 'highlight';
+            }
+
+            // change doc element class to show JS support
+            var docEl = document.documentElement;
+            docEl.className = docEl.className.replace('no-', '');
+        })();
+    </script>-->

@@ -1,0 +1,24 @@
+.fix-top{
+    margin-top: 90px;
+}
+
+/*#drop_zone {
+    border:2px #bbb dashed; 
+    padding:25px; 
+    text-align:center;            
+    -moz-border-radius:5px; 
+    -webkit-border-radius:5px; 
+    border-radius:5px;
+    }
+.js #drop_zone {background:#efe;}
+.no-js #drop_zone, #drop_zone.highlight {background:#fee;}
+#list ol {border-bottom:1px #000 solid; margin:0 0 50px; padding:0 0 40px 20px;}
+#list ol li {margin:0 0 10px;}
+#list ol li:after {clear:both; content:""; display:table;} /* clearfix */
+/*dl, dt, dd, figure {float:left; margin:0 20px 0 0;}
+dl, textarea {height:75px;}
+dl {width:300px;}
+dt {clear:left; width:100px;}
+figure {max-width:200px;}
+.thumb {max-height:75px; max-width:200px;}
+textarea {float:right; width:40%;}*/
