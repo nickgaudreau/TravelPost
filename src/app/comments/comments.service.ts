@@ -21,21 +21,21 @@ export class CommentsServices {
     getAll(): Observable<IComment[]> {
         return this._http.get(this._webApiBaseUrl + '/all', this.getHeaders())
         .map((response: Response) => response.json())
-        .do(data => console.log(`All Data: \n ${ JSON.stringify(data) }`))
+        //.do(data => console.log(`All Data: \n ${ JSON.stringify(data) }`))
         .catch(this.handleError);
     }
 
     getAllWhere(id: number): Observable<IComment[]> {
         return this._http.get(this._webApiBaseUrl + '/allwhereid/' + id, this.getHeaders())
         .map((response: Response) => response.json())
-        .do(data => console.log(`All where Data: \n ${ JSON.stringify(data) }`))
+        //.do(data => console.log(`All where Data: \n ${ JSON.stringify(data) }`))
         .catch(this.handleError);
     }
  
     getById(id: number): Observable<IComment> {
         return this._http.get(this._webApiBaseUrl + '/get/' + id, this.getHeaders())
         .map((response: Response) => response.json())
-        .do(data => console.log(` Data by id: ${id} :: \n ${ JSON.stringify(data) }`))
+        //.do(data => console.log(` Data by id: ${id} :: \n ${ JSON.stringify(data) }`))
         .catch(this.handleError);
     }
  

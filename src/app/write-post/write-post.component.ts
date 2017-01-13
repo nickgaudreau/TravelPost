@@ -47,9 +47,8 @@ export class WritePostComponent implements OnInit {
 
   buildForm() {
     this.savePostForm = this._formBuilder.group({
-      post_title: [null, Validators.required],
-      
-      post_mainPic: [null, Validators.required],
+      post_title: [null, Validators.required],      
+      post_mainPic: [],
       post_memo: [null, Validators.required],
       post_location: [null, Validators.required],
       post_text: [] // not needed with summernote - not functional anyway
@@ -61,7 +60,7 @@ export class WritePostComponent implements OnInit {
     this.postUser = "admin";//username; // for now until have membership pro
 
     // $ for summernote to load
-    $('#summernote-post-main-pic').summernote({toolbar:[], placeholder:'drag and drop your pic here'}); // empty toolbar for pic drag n drop
+    $('#summernote-post-main-pic').summernote({toolbar:[['picture', ['picture']]], placeholder:'drag and drop your pic here'}); // empty toolbar for pic drag n drop
     $('#summernote-post-text').summernote(); // text
 
     // NO NEED PIPE - simply use HTML5 Datalist with inputs below testing filter by title..later will be ILocation object interface
@@ -109,6 +108,8 @@ export class WritePostComponent implements OnInit {
       let post: IPost = {
         id: 0,
         title: form.post_title,
+        mainPic: $('#summernote-post-main-pic').summernote('code'),
+        memo: form.post_memo,
         location: form.post_location,
         createdDate: new Date().toLocaleDateString(), // server side, but need it here too due to async issue
         text: $('#summernote-post-text').summernote('code'),
