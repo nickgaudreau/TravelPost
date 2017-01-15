@@ -40,8 +40,19 @@ body{
 	top: 0;
 	z-index: 999;
 }
+.nav-anchor {
+	text-decoration: none;
+}
 .logo{
 	float:left;
+}
+.logo-text{
+	color: #c9494f;
+    font-weight: bolder;
+    font-size: x-large;
+    top: 16px;
+    left: -23px;
+    position: relative;
 }
 .logo img{
 	display:inline-block;
@@ -55,7 +66,7 @@ body{
 	width:48px;
 	height:34px;
 	display:block;
-	background:url(../img/nav-icon.png) no-repeat 0px 0px;
+	/*background:url(../img/nav-icon.png) no-repeat 0px 0px;*/
 }
 .top-searchbar {
 	float: left;
@@ -217,7 +228,7 @@ a.boxclose{
 	background:url(../img/start-rateh.png) no-repeat 0px 0px; 
 }
 .post-basic-info{
-	padding: 7% 7% 5% 7%;
+	padding: 0% 7% 5% 7%;
 }
 .post-basic-info h3 a{
 	color: #717171;

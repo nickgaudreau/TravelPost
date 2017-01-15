@@ -5,7 +5,6 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
 import { PostsComponent } from './posts/posts.component';
 import { CommentsComponent } from './comments/comments.component';
 import { PostDetailsComponent } from './post-details/post-details.component';
@@ -36,7 +35,6 @@ export class EscapeHtmlPipe implements PipeTransform {
     declarations: [
         AppComponent,
         PostsComponent,
-        HomeComponent,
         CommentsComponent,
         PostDetailsComponent,
         WritePostComponent,
@@ -50,9 +48,6 @@ export class EscapeHtmlPipe implements PipeTransform {
         ReactiveFormsModule,
         RouterModule.forRoot([
             {
-                path: 'Home', component: HomeComponent
-            },
-            {
                 path: 'Posts', component: PostsComponent
             },
             {
@@ -62,10 +57,10 @@ export class EscapeHtmlPipe implements PipeTransform {
                 path: 'PostDetails/:id/:username', component: PostDetailsComponent
             },
             { //default
-                path: '', redirectTo: 'Home', pathMatch: 'full'
+                path: '', redirectTo: 'Posts', pathMatch: 'full'
             },
             { // not found
-                path: '**', component: HomeComponent // will have a page not found component
+                path: '**', component: PostsComponent // will have a page not found component
             }
         ])
     ],

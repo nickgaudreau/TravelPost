@@ -1,11 +1,31 @@
 <div class="row fix-top">
 
   <!-- Blog Entries Column -->
-  <div class="col-md-8" *ngIf='posts && posts.length'>
-    <h1 class="page-header">
-      Posts
-      <small>Secondary Text</small>
-    </h1>
+  <div class="col-md-12" id="woodmark-compo" >    
+
+    <div id="main" role="main">
+      <ul id="tiles" >
+        <li *ngFor='let post of posts | locationFilter : txtLocationParent'>
+			        	<div [innerHTML]="post.mainPic | escapeHtml"></div>
+			        	<div class="post-info">
+			        		<div class="post-basic-info">
+				        		<h4><a href="#"><a [routerLink]="['/PostDetails', post.id, post.username]">{{post.title}}</a></a></h4>
+				        		<span><a href="#"><label> </label>{{post.location}} </a></span>
+				        		 <p [innerHTML]="post.memo | escapeHtml"></p>
+			        		</div>
+			        		<div class="post-info-rate-share">
+			        			<div class="rateit">
+			        				<span> </span>
+			        			</div>
+			        			<div class="post-share">
+			        				<span> </span>
+			        			</div>
+			        			<div class="clear"> </div>
+			        		</div>
+			        	</div>
+			        </li>
+      </ul>
+    </div>
 
     <!-- First Blog Post -->
     <!--<div *ngFor='let post of posts | locationFilter : txtLocation'>
@@ -27,16 +47,29 @@
     </div>-->
 
     <!-- Pager -->
-    <ul class="pager">
+    <!--<ul class="pager">
       <li class="previous">
         <a href="#">&larr; Older</a>
       </li>
       <li class="next">
         <a href="#">Newer &rarr;</a>
       </li>
-    </ul>
+    </ul>-->
 
   </div>
+
+  
+
+</div>
+<!-- /.row -->
+
+<div class="row fix-top">
+  <div class="col-md-12 text-center">
+    <span class="fa fa-refresh fa-spin fa-3x fa-fw" aria-hidden="true"></span>
+  </div>
+</div>
+
+<div class="row">
 
   <!-- Blog Sidebar Widgets Column -->
   <div class="col-md-4">
@@ -55,63 +88,18 @@
       <!-- /.input-group -->
     </div>
 
-    <!-- Blog Categories Well -->
-    <div class="well">
-      <h4>Blog Categories</h4>
-      <div class="row">
-        <div class="col-lg-6">
-          <ul class="list-unstyled">
-            <li><a href="#">Category Name</a>
-            </li>
-            <li><a href="#">Category Name</a>
-            </li>
-            <li><a href="#">Category Name</a>
-            </li>
-            <li><a href="#">Category Name</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <!-- /.row -->
-    </div>
-
-    
+        
 
   </div>
 
+
 </div>
-<!-- /.row -->
 
 <hr />
 
 <!---start-content---->
 <div class="content">
   <div class="wrap">
-    <div id="main" role="main">
-      <ul id="tiles" >
-        <li *ngFor='let post of posts | locationFilter : txtLocation' >
-			        	<div [innerHTML]="post.mainPic | escapeHtml"></div>
-			        	<div class="post-info">
-			        		<div class="post-basic-info">
-				        		<h3><a href="#"><a [routerLink]="['/PostDetails', post.id, post.username]">{{post.title}}</a></a></h3>
-				        		<span><a href="#"><label> </label>{{post.location}} </a></span>
-				        		 <p [innerHTML]="post.memo | escapeHtml"></p>
-			        		</div>
-			        		<div class="post-info-rate-share">
-			        			<div class="rateit">
-			        				<span> </span>
-			        			</div>
-			        			<div class="post-share">
-			        				<span> </span>
-			        			</div>
-			        			<div class="clear"> </div>
-			        		</div>
-			        	</div>
-			        </li>
-      </ul>
-    </div>
+    
   </div>
 </div>
-
-
-
