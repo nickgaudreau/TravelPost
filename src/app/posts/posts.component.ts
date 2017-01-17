@@ -12,11 +12,11 @@ declare var $: any;
 export class PostsComponent implements OnInit {
   posts: IPost[];
   errorMessage: string;
-  txtLocation: string;
+  static txtLocation: string = "";
 
   @Input() txtLocationParent: any;
 
-  private _postService: PostServices;
+  private _postService: PostServices;  
 
   constructor(postService: PostServices) {
     this._postService = postService;
@@ -25,15 +25,25 @@ export class PostsComponent implements OnInit {
   ngOnInit() {
     this._postService.getAll()
       .subscribe(
-      data => { this.posts = data; console.log("data.length: " + data.length); this.dataLoadComplete();}, // here
+      data => { this.posts = data; console.log("data.length: " + data.length); PostsComponent.dataLoadComplete();}, // here
       error => this.errorMessage = <any>error // <any> is a cat ops to any data type
       );
 
       //this.txtLocationParent.subscribe(data => { console.log(data); this.txtLocation = data} );
   } 
 
+  static setTxtLocation(txt: string): void{
+    console.log('inside child: ' + txt);
+    PostsComponent.txtLocation = txt;  
+    PostsComponent.dataLoadComplete(); 
+  }
+
+  get getLocation(){
+    return PostsComponent.txtLocation;
+  }
+
     
-  dataLoadComplete():void{
+  static dataLoadComplete():void{
     var $tiles = $('#tiles'),
       $handler = $('li', $tiles),
       $main = $('#main'),

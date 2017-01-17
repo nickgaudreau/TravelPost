@@ -10,7 +10,7 @@
 	</div>	
 	<div class="top-searchbar">
 		<form>
-			<input type="text" [(ngModel)] = 'txt' (keypress)="keyPressed($event, txt)"  [ngModelOptions]="{standalone: true}" />
+			<input type="text" [(ngModel)] = 'txt' (keyup)="keyPressed($event)"  [ngModelOptions]="{standalone: true}" />
 			<input type="submit" value=""  />
 		</form>
 	</div>

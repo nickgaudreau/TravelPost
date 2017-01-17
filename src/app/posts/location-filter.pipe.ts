@@ -12,6 +12,8 @@ export class LocationFilterPipe implements PipeTransform{
         // if no filterBr return null
         filterBy = filterBy ? filterBy.toLocaleLowerCase() : null;
 
+        if(list == null || list == undefined) return list;
+
         // if not null filter otherwise return original list
         // could be coded with indexOf:        
         //return filterBy ? list.filter( (prod: IPost) => prod.productName.toLocaleLowerCase().indexOf(filterBy) !== -1) : list;
