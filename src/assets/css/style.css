@@ -40,11 +40,16 @@ body{
 	top: 0;
 	z-index: 999;
 }
+.nav-anchor:hover {
+	text-decoration: none !important;
+}
 .nav-anchor {
-	text-decoration: none;
+	text-decoration: none !important;
 }
 .logo{
-	float:left;
+	float: left;
+    top: -10px;
+    position: relative;
 }
 .logo-text{
 	color: #c9494f;
@@ -54,6 +59,9 @@ body{
     left: -23px;
     position: relative;
 }
+.logo-text a:hover {
+	text-decoration: none;
+}
 .logo img{
 	display:inline-block;
 }
@@ -62,6 +70,8 @@ body{
 	margin: 0.6% 2% 0 8%;
 	width: 4.55%;
 }
+.nav-icon a {color: #c9494f;}
+.nav-icon a:hover{text-decoration: none;}
 .nav-icon a span{
 	width:48px;
 	height:34px;

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnChanges, Input, Output, EventEmitter, ViewContainerRef } from '@angular/core';
 import { IPost } from '../posts/IPost';
 import { ILocation } from './ILocation';
 import { ActivatedRoute } from '@angular/router';
@@ -7,7 +7,9 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { PostServices } from '../posts/posts.service';
 import { Subscription } from 'rxjs/Subscription';
 
-import { LocationServices } from './location.service'
+import { LocationServices } from './location.service';
+
+import { ToastsManager, ToastOptions } from 'ng2-toastr/ng2-toastr';
 
 declare var $: any;
 
@@ -36,13 +38,16 @@ export class WritePostComponent implements OnInit {
 
   //@Output() childReadyEvent: EventEmitter<IPost[]> = new EventEmitter();
 
-  constructor(activatedRoute: ActivatedRoute, postServices: PostServices, locationServices: LocationServices, formBuilder: FormBuilder) {
+  constructor(activatedRoute: ActivatedRoute, postServices: PostServices, locationServices: LocationServices, formBuilder: FormBuilder, public toastr: ToastsManager, vRef: ViewContainerRef) {
     this._activatedRoute = activatedRoute;
     this._postServices = postServices;
     this._locationServices = locationServices;
     this._formBuilder = formBuilder;
 
     this.buildForm();
+
+    // fix for toast
+    this.toastr.setRootViewContainerRef(vRef);
   }
 
   buildForm() {
@@ -55,7 +60,7 @@ export class WritePostComponent implements OnInit {
     })
   }
 
-  ngOnInit() {
+  ngOnInit() {    
     //let username = this._activatedRoute.snapshot.params['username']; 
     this.postUser = "admin";//username; // for now until have membership pro
 
@@ -135,9 +140,18 @@ export class WritePostComponent implements OnInit {
     else
       this.posts.push(data);
 
-    this.postSaved = true;
-    setTimeout(() => this.postSaved = false, 2000);
+    let options: ToastOptions = new ToastOptions({
+      animate: 'flyRight',
+      positionClass: 'toast-bottom-center'
+    });
+    this.toastr.success('Post added!', 'Success!', options);
+    // this.postSaved = true;
+    // setTimeout(() => this.postSaved = false, 2000);
   }
+
+  // showSuccess() {
+  //       this.toastr.success('You are awesome!', 'Success!');
+  //     }
 
   setLocalStorage(locations: ILocation[]) {
     localStorage.setItem("cities", JSON.stringify(locations));

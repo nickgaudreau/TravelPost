@@ -1,15 +1,17 @@
-<div class="well fix-top">
-  <div class="alert alert-success" *ngIf="postSaved">Post added.</div>
-  <h4>Write a new post:</h4>
+<div class="fix-top"></div>
+<h3>Write a post:</h3>
+<div class="">
+  <!--<button class="btn btn-default" (click)="showSuccess()">Toastr Tester</button>-->
+  
   <form role="form" [formGroup]="savePostForm" (ngSubmit)="savePost($event)">
     <div class="form-group" [ngClass]="{'has-error':!savePostForm.controls['post_title'].valid && savePostForm.controls['post_title'].touched}">
-      <label>Title</label>
+      <label>Title:</label>
       <input class="form-control" type="text" [formControl]="savePostForm.controls['post_title']">
       <!-- Here we are using the ngIf directive to display an error message  -->
       <div class="alert alert-danger" *ngIf="!savePostForm.controls['post_title'].valid && savePostForm.controls['post_title'].touched">You must enter a title.</div>
     </div>
     <div class="form-group" [ngClass]="{'has-error':!savePostForm.controls['post_mainPic'].valid && savePostForm.controls['post_mainPic'].touched}">
-      <label>Main post pic</label>
+      <label>Main pic:</label>
       <textarea id="summernote-post-main-pic" class="form-control" [formControl]="savePostForm.controls['post_mainPic']" rows="3"></textarea>
       <!--<div id="drop_zone"><noscript>JavaScript must be enabled to use the drop zone.</noscript></div>
       <output id="list"></output>-->
@@ -17,8 +19,8 @@
       <div class="alert alert-danger" *ngIf="!savePostForm.controls['post_mainPic'].valid && savePostForm.controls['post_mainPic'].touched">You must enter an img.</div>
     </div>
     <div class="form-group" [ngClass]="{'has-error':!savePostForm.controls['post_memo'].valid && savePostForm.controls['post_memo'].touched}">
-      <label>Memo</label>
-      <input class="form-control" type="text" [formControl]="savePostForm.controls['post_memo']">
+      <label>Memo:</label>
+      <textarea class="form-control" type="text" [formControl]="savePostForm.controls['post_memo']" rows="3"></textarea>
       <!-- Here we are using the ngIf directive to display an error message  -->
       <div class="alert alert-danger" *ngIf="!savePostForm.controls['post_memo'].valid && savePostForm.controls['post_memo'].touched">You must enter a memo.</div>
     </div>
@@ -42,7 +44,7 @@
   </form>
 </div>
 <hr>
-
+<!--<div class="alert alert-success" *ngIf="postSaved">Post added.</div>-->
 <!--<script>
         (function(){
             var processFiles = function (event) {

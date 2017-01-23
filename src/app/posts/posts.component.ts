@@ -25,7 +25,7 @@ export class PostsComponent implements OnInit {
   ngOnInit() {
     this._postService.getAll()
       .subscribe(
-      data => { this.posts = data; console.log("data.length: " + data.length); PostsComponent.dataLoadComplete();}, // here
+      data => { this.posts = data; console.log("data.length: " + data.length); PostsComponent.setTxtLocation("")}, // here
       error => this.errorMessage = <any>error // <any> is a cat ops to any data type
       );
 
@@ -78,7 +78,7 @@ export class PostsComponent implements OnInit {
       var winHeight = window.innerHeight ? window.innerHeight : $window.height(), // iphone fix
         closeToBottom = ($window.scrollTop() + winHeight > $document.height() - 100);
 
-      if (closeToBottom) {
+      if (closeToBottom && (window.location.href.indexOf("Posts") > -1)) {
         // Get the first then items from the grid, clone them, and add them to the bottom of the grid
         var $items = $('li', $tiles),
           $firstThree = $items.slice(0, 3);

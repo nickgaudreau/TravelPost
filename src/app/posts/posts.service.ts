@@ -28,28 +28,28 @@ export class PostServices {
     getById(id: number): Observable<IPost> {
         return this._http.get(this._webApiBaseUrl + '/get/' + id, this.getHeaders())
         .map((response: Response) => response.json())
-        .do(data => console.log(` Data by id: ${id} :: \n ${ JSON.stringify(data) }`))
+        //.do(data => console.log(` Data by id: ${id} :: \n ${ JSON.stringify(data) }`))
         .catch(this.handleError);
     }
  
     create(post: IPost): Observable<IPost> {
         return this._http.post(this._webApiBaseUrl + '/add', post,  this.getHeaders())
         .map((response: Response) => response.json())
-        .do(data => console.log(`Data returned created :: \n ${JSON.stringify(data)}`))
+        //.do(data => console.log(`Data returned created :: \n ${JSON.stringify(data)}`))
         .catch(this.handleError);
     }
  
     update(post: IPost): Observable<boolean> {
         return this._http.put(this._webApiBaseUrl + '/update/' + post.id, post, this.getHeaders())
         .map((response: Response) => response.json())
-        .do(data => console.log(`Data returned created :: \n ${JSON.stringify(data)}`))
+        //.do(data => console.log(`Data returned created :: \n ${JSON.stringify(data)}`))
         .catch(this.handleError);
     }
  
     delete(id: number): Observable<boolean> {
         return this._http.delete(this._webApiBaseUrl + '/delete/' + id, this.getHeaders())
         .map((response: Response) => response.json())
-        .do(data => console.log(`Data returned created :: \n ${JSON.stringify(data)}`))
+        //.do(data => console.log(`Data returned created :: \n ${JSON.stringify(data)}`))
         .catch(this.handleError);
     }
 

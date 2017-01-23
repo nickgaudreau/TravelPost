@@ -3,7 +3,6 @@
   <div class="col-md-12" id="woodmark-compo" >    
 
     <div id="main" role="main" >
-      <h1>test: {{ getLocation }}</h1>
       <ul id="tiles">
         <li *ngFor='let post of posts | locationFilter : getLocation'>
 			        	<div [innerHTML]="post.mainPic | escapeHtml"></div>

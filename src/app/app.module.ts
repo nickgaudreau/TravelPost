@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { PostsComponent } from './posts/posts.component';
 import { CommentsComponent } from './comments/comments.component';
 import { PostDetailsComponent } from './post-details/post-details.component';
+import {ToastModule} from 'ng2-toastr/ng2-toastr';
 
 import { PostServices } from './posts/posts.service';
 import { CommentsServices } from './comments/comments.service';
@@ -43,6 +44,7 @@ export class EscapeHtmlPipe implements PipeTransform {
     ],
     imports: [
         BrowserModule,
+        ToastModule,
         FormsModule,
         HttpModule,
         ReactiveFormsModule,

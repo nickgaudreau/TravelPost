@@ -10,7 +10,7 @@
 	</div>	
 	<div class="top-searchbar">
 		<form>
-			<input type="text" [(ngModel)] = 'txt' (keyup)="keyPressed($event)"  [ngModelOptions]="{standalone: true}" />
+			<input type="text" [(ngModel)] = 'txt' (keyup)="keyPressed($event)"  [ngModelOptions]="{standalone: true}" placeholder="search by city"/>
 			<input type="submit" value=""  />
 		</form>
 	</div>
@@ -18,7 +18,7 @@
 		<div class="user">
 			<ul>
 				<li>
-					<a href="#"><img [src]='getPath("user-pic.png")' title="user-name" /><span>Ipsum</span></a>
+					<a href="#"><img [src]='getPath("user-pic.png")' title="user-name" /><span>John</span></a>
 				</li>
 			</ul>
 		</div>
