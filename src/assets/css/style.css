@@ -70,7 +70,7 @@ body{
 	margin: 0.6% 2% 0 8%;
 	width: 4.55%;
 }
-.nav-icon a {color: #c9494f;}
+.nav-icon a {color: #c9494f; text-decoration: none;}
 .nav-icon a:hover{text-decoration: none;}
 .nav-icon a span{
 	width:48px;

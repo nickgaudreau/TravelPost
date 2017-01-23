@@ -1,6 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewContainerRef } from '@angular/core';
 import { IPost } from './IPost';
 import { PostServices } from './posts.service';
+
+import { ToastsManager, ToastOptions } from 'ng2-toastr/ng2-toastr';
 
 declare var $: any;
 
@@ -16,34 +18,36 @@ export class PostsComponent implements OnInit {
 
   @Input() txtLocationParent: any;
 
-  private _postService: PostServices;  
+  private _postService: PostServices;
 
-  constructor(postService: PostServices) {
+  constructor(postService: PostServices, public toastr: ToastsManager, vRef: ViewContainerRef) {
     this._postService = postService;
+    // fix for toast
+    this.toastr.setRootViewContainerRef(vRef);
   }
-  
+
   ngOnInit() {
     this._postService.getAll()
       .subscribe(
-      data => { this.posts = data; console.log("data.length: " + data.length); PostsComponent.setTxtLocation("")}, // here
+      data => { this.posts = data; console.log("data.length: " + data.length); PostsComponent.setTxtLocation("") }, // here
       error => this.errorMessage = <any>error // <any> is a cat ops to any data type
       );
 
-      //this.txtLocationParent.subscribe(data => { console.log(data); this.txtLocation = data} );
-  } 
-
-  static setTxtLocation(txt: string): void{
-    console.log('inside child: ' + txt);
-    PostsComponent.txtLocation = txt;  
-    PostsComponent.dataLoadComplete(); 
+    //this.txtLocationParent.subscribe(data => { console.log(data); this.txtLocation = data} );
   }
 
-  get getLocation(){
+  static setTxtLocation(txt: string): void {
+    console.log('inside child: ' + txt);
+    PostsComponent.txtLocation = txt;
+    PostsComponent.dataLoadComplete();
+  }
+
+  get getLocation() {
     return PostsComponent.txtLocation;
   }
 
-    
-  static dataLoadComplete():void{
+
+  static dataLoadComplete(): void {
     var $tiles = $('#tiles'),
       $handler = $('li', $tiles),
       $main = $('#main'),
@@ -92,7 +96,15 @@ export class PostsComponent implements OnInit {
     applyLayout();
 
     // Capture scroll event.
-    $window.bind('scroll.wookmark', onScroll);   
+    $window.bind('scroll.wookmark', onScroll);
+  }
+
+  showRating() {
+    this.toastr.info('Thank you for your rating!', ':)');
+  }
+
+  showShare() {
+    this.toastr.info('Voted in to our Facebook Fav!', 'Thank you!');
   }
 
 }

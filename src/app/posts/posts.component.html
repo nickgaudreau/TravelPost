@@ -9,14 +9,14 @@
 			        	<div class="post-info">
 			        		<div class="post-basic-info">
 				        		<h4><a href="#"><a [routerLink]="['/PostDetails', post.id, post.username]">{{post.title}}</a></a></h4>
-				        		<span><a href="#"><label> </label>{{post.location}} </a></span>
+				        		<span><a [routerLink]="['/PostDetails', post.id, post.username]"><label> </label>{{post.location}} </a></span>
 				        		 <p [innerHTML]="post.memo | escapeHtml"></p>
 			        		</div>
 			        		<div class="post-info-rate-share">
-			        			<div class="rateit">
+			        			<div class="rateit" (click)="showRating()">
 			        				<span> </span>
 			        			</div>
-			        			<div class="post-share">
+			        			<div class="post-share" (click)="showShare()">
 			        				<span> </span>
 			        			</div>
 			        			<div class="clear"> </div>
