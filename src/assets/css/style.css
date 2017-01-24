@@ -32,7 +32,7 @@ body{
 }
 /*---start-header----*/
 .header{
-	background:url(../img/border.png) repeat-x 0px 0px #FFF;
+	background:url(../img/test.jpg) repeat-x 0px 0px #FFF;
 	padding: 1.5em 0 1.2em;
 	border-bottom: 1px solid rgba(214, 213, 212, 0.64);
 	position: fixed;
@@ -61,6 +61,7 @@ body{
 }
 .logo-text a:hover {
 	text-decoration: none;
+	color: #337ab7;
 }
 .logo img{
 	display:inline-block;
@@ -70,7 +71,7 @@ body{
 	margin: 0.6% 2% 0 8%;
 	width: 4.55%;
 }
-.nav-icon a {color: #c9494f; text-decoration: none;}
+.nav-icon a {color: #c9494f; text-decoration: none !important;}
 .nav-icon a:hover{text-decoration: none;}
 .nav-icon a span{
 	width:48px;

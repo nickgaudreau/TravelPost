@@ -2,6 +2,15 @@
     margin-top: 90px;
 }
 
+.font-write{
+    font-family: 'Indie Flower', cursive;
+    font-size: 120%;
+}
+
+.font-title{
+    font-family: fantasy;    
+}
+
 /*#drop_zone {
     border:2px #bbb dashed; 
     padding:25px; 

@@ -65,7 +65,9 @@ export class WritePostComponent implements OnInit {
     this.postUser = "admin";//username; // for now until have membership pro
 
     // $ for summernote to load
-    $('#summernote-post-main-pic').summernote({toolbar:[['picture', ['picture']]], placeholder:'drag and drop your pic here'}); // empty toolbar for pic drag n drop
+    // just one toolbar item=> pic
+    //$('#summernote-post-main-pic').summernote({toolbar:[['picture', ['picture']]], placeholder:'drag and drop your pic here'}); // empty toolbar for pic drag n drop
+    $('#summernote-post-main-pic').summernote({toolbar:[], placeholder:'drag and drop your pic here'}); // empty toolbar for pic drag n drop
     $('#summernote-post-text').summernote(); // text
 
     // NO NEED PIPE - simply use HTML5 Datalist with inputs below testing filter by title..later will be ILocation object interface

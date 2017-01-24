@@ -13,12 +13,14 @@ import {ToastModule} from 'ng2-toastr/ng2-toastr';
 import { PostServices } from './posts/posts.service';
 import { CommentsServices } from './comments/comments.service';
 import { WritePostComponent } from './write-post/write-post.component';
+import { SideContentComponent } from './side-content/side-content.component';
 
 import { LocationFilterPipe } from './posts/location-filter.pipe';
 import { LocationServices } from './write-post/location.service'
 
 // TODO: this to go in his own file...like CityFilterPipe
-import { DomSanitizer } from '@angular/platform-browser'
+import { DomSanitizer } from '@angular/platform-browser';
+
 @Pipe({ name: 'escapeHtml', pure: false })
 export class EscapeHtmlPipe implements PipeTransform {
     constructor(private sanitized: DomSanitizer) { }
@@ -40,7 +42,8 @@ export class EscapeHtmlPipe implements PipeTransform {
         PostDetailsComponent,
         WritePostComponent,
         EscapeHtmlPipe,
-        LocationFilterPipe
+        LocationFilterPipe,
+        SideContentComponent
     ],
     imports: [
         BrowserModule,

@@ -1,17 +1,17 @@
 <div class="fix-top"></div>
-<h3>Write a post:</h3>
-<div class="">
+
+<div class="col-lg-8 font-write">
   <!--<button class="btn btn-default" (click)="showSuccess()">Toastr Tester</button>-->
-  
+  <h1 class="font-title">Share a travel experience...</h1>
   <form role="form" [formGroup]="savePostForm" (ngSubmit)="savePost($event)">
     <div class="form-group" [ngClass]="{'has-error':!savePostForm.controls['post_title'].valid && savePostForm.controls['post_title'].touched}">
-      <label>Title:</label>
+      <label>... give it a name</label>
       <input class="form-control" type="text" [formControl]="savePostForm.controls['post_title']">
       <!-- Here we are using the ngIf directive to display an error message  -->
       <div class="alert alert-danger" *ngIf="!savePostForm.controls['post_title'].valid && savePostForm.controls['post_title'].touched">You must enter a title.</div>
     </div>
     <div class="form-group" [ngClass]="{'has-error':!savePostForm.controls['post_mainPic'].valid && savePostForm.controls['post_mainPic'].touched}">
-      <label>Main pic:</label>
+      <label>... put up a main pic</label>
       <textarea id="summernote-post-main-pic" class="form-control" [formControl]="savePostForm.controls['post_mainPic']" rows="3"></textarea>
       <!--<div id="drop_zone"><noscript>JavaScript must be enabled to use the drop zone.</noscript></div>
       <output id="list"></output>-->
@@ -19,13 +19,13 @@
       <div class="alert alert-danger" *ngIf="!savePostForm.controls['post_mainPic'].valid && savePostForm.controls['post_mainPic'].touched">You must enter an img.</div>
     </div>
     <div class="form-group" [ngClass]="{'has-error':!savePostForm.controls['post_memo'].valid && savePostForm.controls['post_memo'].touched}">
-      <label>Memo:</label>
+      <label>...describe it in few line</label>
       <textarea class="form-control" type="text" [formControl]="savePostForm.controls['post_memo']" rows="3"></textarea>
       <!-- Here we are using the ngIf directive to display an error message  -->
       <div class="alert alert-danger" *ngIf="!savePostForm.controls['post_memo'].valid && savePostForm.controls['post_memo'].touched">You must enter a memo.</div>
     </div>
     <div class="form-group"[ngClass]="{'has-error':!savePostForm.controls['post_location'].valid && savePostForm.controls['post_location'].touched}">
-      <label for="select-city">Location:</label>
+      <label for="select-city">...where was it?!</label>
       <!-- to remove from the registered form group : [ngModelOptions]="{standalone: true}" -->
       <input class="form-control" type="text" [formControl]="savePostForm.controls['post_location']" id="select-city" list="cities" placeholder="start typing a city" />
       <!--<input class="form-control" type="text" [(ngModel)]='txtCity' [ngModelOptions]="{standalone: true}" id="select-city" list="cities" />-->
@@ -35,7 +35,7 @@
       <div class="alert alert-danger" *ngIf="!savePostForm.controls['post_location'].valid && savePostForm.controls['post_location'].touched">You must enter/select a location.</div>
     </div>
     <div class="form-group" >
-      <label>Post: Text, pictures video, ... anything you wish</label>
+      <label>And there you go full-on story in text, pictures, video, ... anything you wish</label>
       <textarea id="summernote-post-text" class="form-control" [formControl]="savePostForm.controls['post_text']" rows="3"></textarea>
       <!-- Here we are using the ngIf directive to display an error message  -->
       <div class="alert alert-danger" *ngIf="!savePostForm.controls['post_text'].valid && savePostForm.controls['post_text'].touched">You must enter a text.</div>
@@ -43,7 +43,13 @@
     <button type="submit" class="btn btn-primary" [disabled]="!savePostForm.valid">Submit</button>
   </form>
 </div>
-<hr>
+
+<!-- Blog Sidebar Widgets Column -->
+  <div class="col-md-4">
+
+    <app-side-content></app-side-content>
+
+  </div>
 <!--<div class="alert alert-success" *ngIf="postSaved">Post added.</div>-->
 <!--<script>
         (function(){

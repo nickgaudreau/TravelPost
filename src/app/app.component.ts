@@ -13,7 +13,7 @@ export class AppComponent implements AfterViewInit {
 
   txt: string;
 
-  txtLocationParent: any;
+  year:any = new Date().getFullYear();
 
   // access child with this decorator
   @ViewChild(PostsComponent) postsChild: PostsComponent;

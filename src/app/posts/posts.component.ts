@@ -16,7 +16,6 @@ export class PostsComponent implements OnInit {
   errorMessage: string;
   static txtLocation: string = "";
 
-  @Input() txtLocationParent: any;
 
   private _postService: PostServices;
 
@@ -80,7 +79,7 @@ export class PostsComponent implements OnInit {
     function onScroll() {
       // Check if we're within 100 pixels of the bottom edge of the broser window.
       var winHeight = window.innerHeight ? window.innerHeight : $window.height(), // iphone fix
-        closeToBottom = ($window.scrollTop() + winHeight > $document.height() - 100);
+        closeToBottom = ($window.scrollTop() + winHeight > $document.height() - 30);
 
       if (closeToBottom && (window.location.href.indexOf("Posts") > -1)) {
         // Get the first then items from the grid, clone them, and add them to the bottom of the grid
@@ -104,7 +103,7 @@ export class PostsComponent implements OnInit {
   }
 
   showShare() {
-    this.toastr.info('Voted in to our Facebook Fav!', 'Thank you!');
+    this.toastr.info('One vote towards our FB Fav!', 'Thank you!');
   }
 
 }
