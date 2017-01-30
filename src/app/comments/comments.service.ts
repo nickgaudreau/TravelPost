@@ -10,8 +10,8 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class CommentsServices {
 
-    private _webApiBaseUrl = "http://localhost:62806/v1/Comments"; // local
-    //private _webApiBaseUrl = "http://nickgaudreau-001-site2.htempurl.com/v1/Comments" // prod
+    //private _webApiBaseUrl = "http://localhost:62806/v1/Comments"; // local
+    private _webApiBaseUrl = "http://nickgaudreau-001-site10.htempurl.com/v1/Comments" // prod
     private _http : Http;
 
     constructor(http : Http){

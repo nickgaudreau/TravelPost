@@ -28,7 +28,7 @@ export class PostsComponent implements OnInit {
   ngOnInit() {
     this._postService.getAll()
       .subscribe(
-      data => { this.posts = data; console.log("data.length: " + data.length); PostsComponent.setTxtLocation("") }, // here
+      data => { this.posts = data; PostsComponent.setTxtLocation("") }, // here
       error => this.errorMessage = <any>error // <any> is a cat ops to any data type
       );
 
@@ -36,7 +36,7 @@ export class PostsComponent implements OnInit {
   }
 
   static setTxtLocation(txt: string): void {
-    console.log('inside child: ' + txt);
+    //console.log('inside child: ' + txt);
     PostsComponent.txtLocation = txt;
     PostsComponent.dataLoadComplete();
   }

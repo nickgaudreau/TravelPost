@@ -10,8 +10,8 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class PostServices {
 
-    private _webApiBaseUrl = "http://localhost:62806/v1/Posts"; // local
-    //private _webApiBaseUrl = "http://nickgaudreau-001-site2.htempurl.com/v1/Posts" // prod
+    //private _webApiBaseUrl = "http://localhost:62806/v1/Posts"; // local
+    private _webApiBaseUrl = "http://nickgaudreau-001-site10.htempurl.com/v1/Posts" // prod
     private _http : Http;
 
     constructor(http : Http){

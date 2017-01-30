@@ -26,11 +26,11 @@ export class PostDetailsComponent implements OnInit {
       this._activatedRoute = activatedRoute;
       this._router = router;
       this._postService = postService;
-      console.log('constructor details');
+      //console.log('constructor details');
   }
 
   ngOnInit() {
-    console.log('init details');
+    //console.log('init details');
     // snapshot is static and get id from generated page url
     let id = +this._activatedRoute.snapshot.params['id']; // the + is a JS shortcut to change a string into a number 
     this.postTitle = `${id}`;
@@ -67,7 +67,7 @@ export class PostDetailsComponent implements OnInit {
   // }
 
   onComplete(id: number){
-    console.log('completed method');
+    //console.log('completed method');
     this.postTitle = this.post.title + ": " + this.post.id;
   }  
 
