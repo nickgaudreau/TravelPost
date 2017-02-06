@@ -37,14 +37,14 @@ export class PostDetailsComponent implements OnInit {
     // .params use observable, this can be useful if url params change without moving from the page
     this.subscription = this._activatedRoute.params.subscribe(
         params => {
-            let id = +params['id'];
+            let id = params['id'];
             this.getPost(id);
             //this.getCommentsWhere(id);
             //this.getPage(id);
     });  
   }
 
-  getPost(id: number) {
+  getPost(id: string) {
       this._postService.getById(id).subscribe(
           post => this.post = post,
           error => this.errorMessage = <any>error, 
@@ -66,9 +66,9 @@ export class PostDetailsComponent implements OnInit {
   //   );
   // }
 
-  onComplete(id: number){
+  onComplete(id: string){
     //console.log('completed method');
-    this.postTitle = this.post.title + ": " + this.post.id;
+    this.postTitle = this.post.title;
   }  
 
   // parentHandlingFcn(receivedParam: IComment[]) {

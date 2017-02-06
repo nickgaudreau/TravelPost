@@ -10,8 +10,8 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class PostServices {
 
-    //private _webApiBaseUrl = "http://localhost:62806/v1/Posts"; // local
-    private _webApiBaseUrl = "http://nickgaudreau-001-site10.htempurl.com/v1/Posts" // prod
+    private _webApiBaseUrl = "http://localhost:62806/v1/Posts"; // local
+    //private _webApiBaseUrl = "http://nickgaudreau-001-site10.htempurl.com/v1/Posts" // prod
     private _http : Http;
 
     constructor(http : Http){
@@ -25,7 +25,7 @@ export class PostServices {
         .catch(this.handleError);
     }    
     
-    getById(id: number): Observable<IPost> {
+    getById(id: string): Observable<IPost> {
         return this._http.get(this._webApiBaseUrl + '/get/' + id, this.getHeaders())
         .map((response: Response) => response.json())
         //.do(data => console.log(` Data by id: ${id} :: \n ${ JSON.stringify(data) }`))

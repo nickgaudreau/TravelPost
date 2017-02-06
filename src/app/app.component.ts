@@ -1,5 +1,7 @@
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
-import { PostsComponent } from './posts/posts.component'
+import { Component, ViewChild, AfterViewInit, ViewContainerRef } from '@angular/core';
+import { PostsComponent } from './posts/posts.component';
+
+import { ToastsManager, ToastOptions } from 'ng2-toastr/ng2-toastr';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +14,15 @@ export class AppComponent implements AfterViewInit {
   navList: string[] = ['Home','Posts', 'Write'];
 
   txt: string;
+
+  /**
+   *
+   */
+  constructor(public toastr: ToastsManager, vRef: ViewContainerRef) {
+    // fix for toast
+    this.toastr.setRootViewContainerRef(vRef);
+    
+  }
 
   year:any = new Date().getFullYear();
 
@@ -29,6 +40,10 @@ export class AppComponent implements AfterViewInit {
 
   keyPressed(event):void{
     PostsComponent.setTxtLocation(event.target.value);
+  }
+
+  loginClicked() {
+    this.toastr.info('This site is still in development!', 'Please comeback later.');
   }
 
 }

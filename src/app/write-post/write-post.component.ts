@@ -68,7 +68,27 @@ export class WritePostComponent implements OnInit {
     // just one toolbar item=> pic
     //$('#summernote-post-main-pic').summernote({toolbar:[['picture', ['picture']]], placeholder:'drag and drop your pic here'}); // empty toolbar for pic drag n drop
     $('#summernote-post-main-pic').summernote({toolbar:[], placeholder:'drag and drop your pic here'}); // empty toolbar for pic drag n drop
-    $('#summernote-post-text').summernote(); // text
+    $('#summernote-post-text').summernote({
+      // callbacks: {
+      //      onImageUpload: function (files) {
+      //           for (var i = 0; i < files.length; i++) {
+      //               console.log(files[i]);
+      //               console.log(URL.createObjectURL(files[i]));
+      //           }
+      //           console.log(files[0].name);
+      //           console.log(files[0].type);
+
+      //            // when done insert image -- need to be after success post web api return url: $('.summernote').summernote("insertImage", url, optional_filename);
+      //           // $('#summernote-post-text').summernote('insertImage', files[0], function ($image) {
+      //           //         $image.css('width', $image.width() / 3);
+      //           //         $image.attr('data-filename', 'retriever');
+      //           //         console.log('retriever');
+      //           //         console.log($image);
+      //           //     });
+      //       }
+      //   }
+    }); // text
+    
 
     // NO NEED PIPE - simply use HTML5 Datalist with inputs below testing filter by title..later will be ILocation object interface
     this._postServices.getAll()
@@ -122,11 +142,12 @@ export class WritePostComponent implements OnInit {
         text: $('#summernote-post-text').summernote('code'),
         username: this.postUser
       }
+      console.log(post);
       this._postServices.create(post).subscribe(
         data => { this.onSuccessPostSaved(data) },
         error => this.errorMessage = <any>error,
         () => { }
-      )
+      );
 
     }
     else {
